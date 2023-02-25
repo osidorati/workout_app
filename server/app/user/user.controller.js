@@ -1,6 +1,6 @@
 import asyncHandler from 'express-async-handler'
-import { prisma } from '../app/prisma.js'
-import { UserFields } from '../app/utils/user.utils.js'
+import { prisma } from '../prisma.js'
+import { UserFields } from '../utils/user.utils.js'
 
 export const getUserProfile = asyncHandler(async (req, res) => {
 	const user = await prisma.user.findUnique({
