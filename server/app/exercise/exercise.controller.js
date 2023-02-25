@@ -6,11 +6,11 @@ import { prisma } from '../prisma.js'
 // @route 	POST /api/exercises
 // @access  Private
 export const createNewExercise = asyncHandler(async (req, res) => {
-	const { name, times, iconPath } = req.body
+	const { names, times, iconPath } = req.body
 
 	const exercise = await prisma.exercise.create({
 		data: {
-			name,
+			names,
 			times,
 			iconPath
 		}
@@ -23,7 +23,7 @@ export const createNewExercise = asyncHandler(async (req, res) => {
 // @route 	PUT /api/exercises/:id
 // @access  Private
 export const updateExercise = asyncHandler(async (req, res) => {
-	const { name, times, iconPath } = req.body
+	const { names, times, iconPath } = req.body
 
 	try {
 		const exercise = await prisma.exercise.update({
@@ -31,7 +31,7 @@ export const updateExercise = asyncHandler(async (req, res) => {
 				id: +req.params.id
 			},
 			data: {
-				name,
+				names,
 				times,
 				iconPath
 			}
