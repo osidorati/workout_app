@@ -1,4 +1,6 @@
 # workout_app
 Приложение для тренировок
-backend in progress 
-use express.js
+
+
+backend [done] use express.js
+frontend [in progress] use react.js
