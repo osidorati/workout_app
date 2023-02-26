@@ -2,5 +2,5 @@
 Приложение для тренировок
 
 
-backend [done] use express.js
-frontend [in progress] use react.js
+backend [done] use express.js  
+frontend [in progress] use react.js  
