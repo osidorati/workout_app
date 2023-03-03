@@ -1,6 +1,8 @@
+import Layout from '../../layout/Layout.jsx'
+
 const Profile = () => {
 	return (
-	<div>PRofile</div>
+	<Layout >PRofile</Layout>
 	)
 }
 

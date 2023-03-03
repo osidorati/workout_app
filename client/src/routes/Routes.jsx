@@ -25,7 +25,7 @@ const Router = () => {
 							element={<route.component />}
 						/>)
 					})
-				}}
+				}
 				<Route path='*' element={<NotFound />} />
 			</Routes>
 		</BrowserRouter>
