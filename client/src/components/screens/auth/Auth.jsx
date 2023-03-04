@@ -5,32 +5,40 @@ import Field from '../../ui/field/Field.jsx'
 import Loader from '../../ui/Loader.jsx'
 import styles from './Auth.module.scss'
 import { useState } from 'react'
+import AuthService from '../../../services/auth.service.js'
+import { useMutation } from '@tanstack/react-query'
 
-const isLoading = false
-const isLoadingAuth = false
 
 const Auth = () => {
-	const [type, setType] = useState('auth')
+	const [type, setType] = useState('login')
 
 	const {
 		register,
 		handleSubmit,
-		formState: { errors }
-	} = useForm({
+		formState: { errors },
+		reset } = useForm({
 		mode: 'onChange'
 	})
 
-	const onSubmit = (data) => {
-		console.log(data)
-	}
+	const {mutate, isLoading} = useMutation(
+		['auth'],
+		({ email, password }) => AuthService.main(email, password, type),
+		{
+		onSuccess: data => {
+			alert('success')
+			reset()
+		}
+	})
 
-	console.log(errors)
+	const onSubmit = (data) => {
+		mutate(data)
+	}
 
 	return (
 		<>
-		<Layout heading='Sign in' bgImage='/images/auth-bg.png'> </Layout>
+		<Layout heading='Sign in' bgImage='/images/auth-bg.png' />
 		<div className='wrapper-inner-page'>
-			{(isLoading || isLoadingAuth) && <Loader />}
+			{isLoading && <Loader />}
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<Field
 					error={errors?.email?.message}
@@ -54,10 +62,9 @@ const Auth = () => {
 					placeholder='Enter password'
 				/>
 				<div className={styles.wrapperButtons}>
-					<Button clickHandler={() => setType('auth')}>Sign in</Button>
+					<Button clickHandler={() => setType('login')}>Sign in</Button>
 					<Button clickHandler={() => setType('register')}>Sign up</Button>
 				</div>
-
 			</form>
 		</div>
 		</>

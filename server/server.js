@@ -8,6 +8,7 @@ import userRoutes from './app/user/user.routes.js'
 import exerciseRoutes from './app/exercise/exercise.routes.js'
 import * as path from 'path'
 import workoutRoutes from './app/workout/workout.routes.js'
+import cors from 'cors'
 
 
 dotenv.config()
@@ -17,6 +18,7 @@ const app = express()
 async function main(){
 	if (process.env.NODE_ENV === 'development') app.use(morgan('dev'))
 
+	app.use(cors())
 	app.use(express.json())
 
 	const __dirname = path.resolve()
