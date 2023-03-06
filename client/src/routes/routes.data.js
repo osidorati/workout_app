@@ -8,7 +8,7 @@ export const routes = [
 		path: '/', //путь
 		// exact = false
 		component: Home, //сам компонент
-		isAuth: false //нужна ли авторизация для этой страницы
+		isAuth: true//нужна ли авторизация для этой страницы
 	},
 	{
 		path: '/auth',
@@ -23,7 +23,7 @@ export const routes = [
 	{
 		path: '/profile',
 		component: Profile,
-		isAuth: false
+		isAuth: true
 	} /*
 	{
 		path: '/new-exercise',
