@@ -37,5 +37,5 @@ export const useExercisePage = () => {
 		onSubmit,
 		isSuccess,
 		error
-	}), [isLoading, errors])
+	}), [isLoading, errors, error, isSuccess])
 }

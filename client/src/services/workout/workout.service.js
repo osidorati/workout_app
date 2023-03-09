@@ -1,23 +1,27 @@
 import { $axios } from '../../api'
 
-const EXERCISES = '/exercises'
+const WORKOUTS = '/workouts'
 
 class WorkoutService {
 	async getAll() {
-		return await $axios.get(EXERCISES)
+		return await $axios.get(WORKOUTS)
 	}
 
-	//name, path, iconPath
+	async getById() {
+		return await $axios.get(`${WORKOUTS}/${id}`)
+	}
+
+	//name, exerciseIds
 	async create(body) {
-		return await $axios.post(EXERCISES, body)
+		return await $axios.post(WORKOUTS, body)
 	}
 
 	async update(id, body) {
-		return await $axios.put(`${EXERCISES}/${id}`, body)
+		return await $axios.put(`${WORKOUTS}/${id}`, body)
 	}
 
 	async delete(id) {
-		return await $axios.delete(`${EXERCISES}/${id}`)
+		return await $axios.delete(`${WORKOUTS}/${id}`)
 	}
 }
 

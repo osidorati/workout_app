@@ -20,6 +20,7 @@
     "react-icons": "^4.7.1",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.8.2",
+    "react-select": "^5.7.0",
     "sass": "^1.58.3"
   },
   "devDependencies": {
