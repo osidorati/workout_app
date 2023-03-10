@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
-import WorkoutLogService from '../../../services/workout/workout-log.service.js'
-import Header from '../../layout/header/Header.jsx'
+import WorkoutLogService from '../../../../services/workout/workout-log.service.js'
+import Header from '../../../layout/header/Header.jsx'
 import cn from 'clsx'
-import stylesLayout from '../../layout/Layout.module.scss'
+import stylesLayout from '../../../layout/Layout.module.scss'
 import styles from './Workout.module.scss'
 
 const Workout = () => {
