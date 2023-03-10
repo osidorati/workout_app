@@ -5,6 +5,7 @@ import Profile from '../components/screens/profile/Profile'
 import NewExercise from '../components/screens/new-exercise/NewExercise.jsx'
 import Workout from '../components/screens/workouts/detail/Workout'
 import ListWorkouts from '../components/screens/workouts/list/ListWorkouts'
+import ExerciseLog from '../components/screens/exercise-log/ExerciseLog.jsx'
 
 export const routes = [
 	{
@@ -42,11 +43,10 @@ export const routes = [
 		path: '/workouts',
 		component: ListWorkouts,
 		isAuth: true,
-	}/*
+	},
 	{
 		path: '/exercise/:id',
-
-		component: SingleExercise,
+		component: ExerciseLog,
 		isAuth: true,
-	}, */
+	}
 ]

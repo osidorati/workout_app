@@ -10,7 +10,6 @@ import * as path from 'path'
 import workoutRoutes from './app/workout/workout.routes.js'
 import cors from 'cors'
 
-
 dotenv.config()
 
 const app = express()
