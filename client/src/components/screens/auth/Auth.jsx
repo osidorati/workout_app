@@ -7,7 +7,7 @@ import { useAuthPage } from './useAuthPage.js'
 
 
 const Auth = () => {
-	const {isLoading, register, errors, handleSubmit, onSubmit} = useAuthPage()
+	const {setType, isLoading, register, errors, handleSubmit, onSubmit} = useAuthPage()
 	
 	return (
 		<>
