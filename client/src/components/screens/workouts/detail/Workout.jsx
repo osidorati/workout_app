@@ -1,6 +1,6 @@
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { Fragment } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import Loader from '../../../ui/Loader.jsx'
 
@@ -9,6 +9,7 @@ import WorkoutLogService from '../../../../services/workout/workout-log.service.
 import ExerciseItem from './ExerciseItem.jsx'
 import HeaderWorkout from './HeaderWorkout.jsx'
 import styles from './Workout.module.scss'
+import Button from '../../../ui/button/Button.jsx'
 
 const Workout = () => {
 	const { id } = useParams()
@@ -22,6 +23,14 @@ const Workout = () => {
 	})
 
 	console.log(workoutLog)
+
+	const navigate = useNavigate()
+
+	const {mutate} = useMutation(['complete workout'],
+		() => WorkoutLogService.complete(id),
+		{ onSuccess() {
+				navigate('/workouts')
+			}})
 
 	return (
 		<>
@@ -48,6 +57,7 @@ const Workout = () => {
 						))}
 					</div>
 				)}
+				<Button clickHandler={() => mutate()}>Complete workout</Button>
 			</div>
 		</>
 	)
