@@ -12,6 +12,7 @@ export const useWorkouts = () => {
 
 	const navigate = useNavigate()
 
+
 	const {
 		mutate: mutate,
 		isLoading,
@@ -20,7 +21,7 @@ export const useWorkouts = () => {
 	} = useMutation(['Create new workout log'],
 		(workoutId) => WorkoutLogService.create(),
 		{onSuccess(data) {
-			navigate(`/workout/${data.id}`)}
+			navigate(`/workout/${data[0].id}`)}
 		})
 
 	return {
