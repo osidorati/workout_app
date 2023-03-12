@@ -1,15 +1,17 @@
-// @desc		Auth user
-// @route		POST /api/users/login
-// @access	Public
-import { prisma } from '../prisma.js'
-import asyncHandler from 'express-async-handler'
-import { generateToken } from './generateToken.js'
-import { hash, verify } from 'argon2'
 import { faker } from '@faker-js/faker'
+import { hash, verify } from 'argon2'
+import asyncHandler from 'express-async-handler'
+
+import { prisma } from '../prisma.js'
 import { UserFields } from '../utils/user.utils.js'
 
+import { generateToken } from './generate-token.js'
+
+// @desc    Auth user
+// @route   POST /api/auth/login
+// @access  Public
 export const authUser = asyncHandler(async (req, res) => {
-	const {email, password} = req.body
+	const { email, password } = req.body
 
 	const user = await prisma.user.findUnique({
 		where: {
@@ -22,19 +24,20 @@ export const authUser = asyncHandler(async (req, res) => {
 	if (user && isValidPassword) {
 		const token = generateToken(user.id)
 		res.json({ user, token })
-	}
-	else {
+	} else {
 		res.status(401)
-		throw new Error('Email or password are not correct')
+		throw new Error('Email and password are not correct')
 	}
 })
 
-
+// @desc    Register user
+// @route   POST /api/auth/register
+// @access  Public
 export const registerUser = asyncHandler(async (req, res) => {
 	// деструктуризация, достаем емейл и пароль
-	const {email, password} = req.body
+	const { email, password } = req.body
 
-	//запрос к бд
+//запрос к бд
 	const isHaveUser = await prisma.user.findUnique({
 		where: {
 			email
@@ -43,14 +46,15 @@ export const registerUser = asyncHandler(async (req, res) => {
 
 	if (isHaveUser) {
 		res.status(400)
-		throw new Error('User already exist')
+		throw new Error('User already exists')
 	}
 
 	const user = await prisma.user.create({
 		data: {
-			email: email,
+			email,
 			password: await hash(password),
-			name: faker.name.fullName()
+			name: faker.name.fullName(),
+			images: ['/images/before.jpg', '/images/after.jpg']
 		},
 		select: UserFields
 	})

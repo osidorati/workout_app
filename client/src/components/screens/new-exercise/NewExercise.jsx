@@ -1,22 +1,44 @@
+import { useMutation } from '@tanstack/react-query'
 import cn from 'clsx'
-import { Controller } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 
 import Loader from '../../ui/Loader'
 import Alert from '../../ui/alert/Alert'
 import Button from '../../ui/button/Button'
 import Field from '../../ui/field/Field'
+
+import ExerciseService from '../../../services/exercise/exercise.service'
 import Layout from '../../layout/Layout'
 
 import styles from './NewExercise.module.scss'
-import { getIconPath } from './icon-path.util.js'
-import { useExercisePage } from './useExercisePage.js'
+import { getIconPath } from './icon-path.util'
 
 const data = ['chest', 'shoulders', 'biceps', 'legs', 'hit', 'back']
 
 const NewExercise = () => {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+		reset,
+		control
+	} = useForm({
+		mode: 'onChange'
+	})
 
-	const {register, error, isSuccess, control, onSubmit, isLoading, handleSubmit, errors} = useExercisePage()
+	const { isSuccess, error, isLoading, mutate } = useMutation(
+		['create exercise'],
+		body => ExerciseService.create(body),
+		{
+			onSuccess: () => {
+				reset()
+			}
+		}
+	)
 
+	const onSubmit = data => {
+		mutate(data)
+	}
 
 	return (
 		<>
@@ -31,8 +53,8 @@ const NewExercise = () => {
 				{isLoading && <Loader />}
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<Field
-						error={errors?.names?.message}
-						name='names'
+						error={errors?.name?.message}
+						name='name'
 						register={register}
 						options={{
 							required: 'Name is required'

@@ -1,6 +1,10 @@
 import asyncHandler from 'express-async-handler'
+
 import { prisma } from '../../prisma.js'
 
+// @desc    Update exercise log time
+// @route   PUT /api/exercises/log/time/:id
+// @access  Private
 export const updateExerciseLogTime = asyncHandler(async (req, res) => {
 	const { weight, repeat, isCompleted } = req.body
 
@@ -22,7 +26,6 @@ export const updateExerciseLogTime = asyncHandler(async (req, res) => {
 		throw new Error('Exercise log time not found!')
 	}
 })
-
 
 // @desc    Update status of complete exercise log
 // @route   PATCH /api/exercises/log/complete/:id

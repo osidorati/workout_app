@@ -25,13 +25,13 @@ const HeaderExerciseLog = ({ isSuccess, exerciseLog }) => {
 				<div className={styles.heading}>
 					<img
 						src={
-							import.meta.env.VITE_SERVER_URL + exerciseLog.exercise[0].iconPath
+							import.meta.env.VITE_SERVER_URL + exerciseLog.exercise.iconPath
 						}
 						height='34'
 						alt=''
 						draggable={false}
 					/>
-					<h1 className={stylesLayout.heading}>{exerciseLog.exercise[0].names}</h1>
+					<h1 className={stylesLayout.heading}>{exerciseLog.exercise.name}</h1>
 				</div>
 			)}
 		</div>

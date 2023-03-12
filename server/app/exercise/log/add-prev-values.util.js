@@ -1,4 +1,4 @@
-export const addPrevValues = (log, prevLog=null) => {
+export const addPrevValues = (log, prevLog = null) => {
 	return log.times.map((item, index) => ({
 		...item,
 		prevWeight: prevLog ? prevLog.times[index].weight : 0,

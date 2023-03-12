@@ -5,7 +5,7 @@ import styles from './Workout.module.scss'
 
 const ExerciseItem = ({ exerciseLog }) => {
 	const navigation = useNavigate()
-	console.log(import.meta.env.VITE_SERVER_URL + exerciseLog.exercise[0].iconPath)
+	console.log(import.meta.env.VITE_SERVER_URL + exerciseLog.exercise.iconPath)
 
 	return (
 		<div
@@ -17,10 +17,10 @@ const ExerciseItem = ({ exerciseLog }) => {
 				aria-label='Move to exercise'
 				onClick={() => navigation(`/exercise/${exerciseLog.id}`)}
 			>
-				<span>{exerciseLog.exercise[0].names}</span>
+				<span>{exerciseLog.exercise.name}</span>
 
 				<img
-					src={import.meta.env.VITE_SERVER_URL + exerciseLog.exercise[0].iconPath}
+					src={import.meta.env.VITE_SERVER_URL + exerciseLog.exercise.iconPath}
 					height='34'
 					alt=''
 					draggable={false}
