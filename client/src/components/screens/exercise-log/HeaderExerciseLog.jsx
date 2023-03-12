@@ -6,7 +6,6 @@ import Header from '../../layout/header/Header'
 import styles from './ExerciseLog.module.scss'
 
 const HeaderExerciseLog = ({ isSuccess, exerciseLog }) => {
-
 	return (
 		<div
 			className={cn(stylesLayout.wrapper, stylesLayout.otherPage)}

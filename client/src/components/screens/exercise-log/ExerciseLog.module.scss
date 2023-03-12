@@ -1,5 +1,5 @@
-@import '/src/assets/styles/variables';
-@import '/src/assets/styles/animation';
+@import 'src/assets/styles/variables';
+@import 'src/assets/styles/animation';
 
 .heading {
 	display: flex;
@@ -12,7 +12,7 @@
 
 .wrapper {
 	border-radius: 10px;
-	background-color: $dark-hard-accent;
+	background-color: $hard-dark-accent;
 	margin: 0 auto;
 	width: 90%;
 
