@@ -3,13 +3,13 @@ import { Fragment } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import Loader from '../../../ui/Loader.jsx'
+import Button from '../../../ui/button/Button.jsx'
 
 import WorkoutLogService from '../../../../services/workout/workout-log.service.js'
 
 import ExerciseItem from './ExerciseItem.jsx'
 import HeaderWorkout from './HeaderWorkout.jsx'
 import styles from './Workout.module.scss'
-import Button from '../../../ui/button/Button.jsx'
 
 const Workout = () => {
 	const { id } = useParams()
@@ -22,15 +22,17 @@ const Workout = () => {
 		select: ({ data }) => data
 	})
 
-	console.log(workoutLog)
-
 	const navigate = useNavigate()
 
-	const {mutate} = useMutation(['complete workout'],
+	const { mutate } = useMutation(
+		['complete workout'],
 		() => WorkoutLogService.complete(id),
-		{ onSuccess() {
+		{
+			onSuccess() {
 				navigate('/workouts')
-			}})
+			}
+		}
+	)
 
 	return (
 		<>

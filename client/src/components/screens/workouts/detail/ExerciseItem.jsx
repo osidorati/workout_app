@@ -5,7 +5,6 @@ import styles from './Workout.module.scss'
 
 const ExerciseItem = ({ exerciseLog }) => {
 	const navigation = useNavigate()
-	console.log(import.meta.env.VITE_SERVER_URL + exerciseLog.exercise.iconPath)
 
 	return (
 		<div
@@ -18,7 +17,6 @@ const ExerciseItem = ({ exerciseLog }) => {
 				onClick={() => navigation(`/exercise/${exerciseLog.id}`)}
 			>
 				<span>{exerciseLog.exercise.name}</span>
-
 				<img
 					src={import.meta.env.VITE_SERVER_URL + exerciseLog.exercise.iconPath}
 					height='34'

@@ -1,9 +1,11 @@
 import cn from 'clsx'
+
 import stylesLayout from '../../../layout/Layout.module.scss'
-import Header from '../../../layout/header/Header.jsx'
+import Header from '../../../layout/header/Header'
+
 import styles from './Workout.module.scss'
 
-const HeaderWorkout = ({workoutLog, isSuccess}) => {
+const HeaderWorkout = ({ workoutLog, isSuccess }) => {
 	return (
 		<div
 			className={cn(stylesLayout.wrapper, stylesLayout.otherPage)}
