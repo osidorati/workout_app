@@ -34,8 +34,8 @@ const NewWorkout = () => {
 				{isLoading && <Loader />}
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<Field
-						error={errors?.names?.message}
-						name='names'
+						error={errors?.name?.message}
+						name='name'
 						register={register}
 						options={{
 							required: 'Name is required'
